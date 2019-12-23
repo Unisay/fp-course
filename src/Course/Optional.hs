@@ -89,13 +89,11 @@ bindOptional =
 --
 -- >>> optional (+1) 0 Empty
 -- 0
-optional ::
-  (a -> b)
-  -> b
-  -> Optional a
-  -> b
-optional =
-  error "todo: Course.Optional#optional"
+optional :: (a -> b) -> b -> Optional a -> b
+optional f b o = case o of
+  Empty -> b
+  Full a -> f a
+
 
 applyOptional :: Optional (a -> b) -> Optional a -> Optional b
 applyOptional f a = bindOptional (\f' -> mapOptional f' a) f

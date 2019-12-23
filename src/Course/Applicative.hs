@@ -307,24 +307,11 @@ instance Applicative IO where
   f <*> a =
     f P.>>= \f' -> P.fmap f' a
 
-return ::
-  Applicative k =>
-  a
-  -> k a
-return =
-  pure
+return :: Applicative k => a -> k a 
+return = pure
 
-fail ::
-  Applicative k =>
-  Chars
-  -> k a
-fail =
-  error . hlist
+fail :: Applicative k => Chars -> k a
+fail = error . hlist
 
-(>>) ::
-  Applicative k =>
-  k a
-  -> k b
-  -> k b
-(>>) =
-  (*>)
+(>>) :: Applicative k => k a -> k b -> k b
+(>>) = (*>)
