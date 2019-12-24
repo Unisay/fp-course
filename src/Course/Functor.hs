@@ -98,6 +98,9 @@ instance Functor ((->) t) where
 void :: Functor k => k a -> k ()
 void = (<$) ()
 
+(<$$>) :: (Functor h, Functor k) => (a -> b) -> h (k a) -> h (k b)
+(<$$>) = (<$>) . (<$>)
+
 -----------------------
 -- SUPPORT LIBRARIES --
 -----------------------

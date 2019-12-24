@@ -120,5 +120,5 @@ main = getArgs >>= \args -> case args of
 -- ? `void . sequence . (<$>)`
 -- Factor it out.
 
--- traverz :: Applicative k => (a -> k b) -> List a -> k (List b)
+traverz :: Applicative k => (a -> k b) -> List a -> k (List b)
 traverz = (sequence .) . (<$>)

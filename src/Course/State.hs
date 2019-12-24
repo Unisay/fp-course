@@ -44,7 +44,7 @@ eval = (<$>) fst . runState
 -- >>> runState get 0
 -- (0,0)
 get :: State s s
-get = State $ \s -> (s, s)
+get = State $ join (,)
 
 -- | A `State` where the resulting state is seeded with the given value.
 --
